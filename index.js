@@ -10,7 +10,7 @@ require('http')
         if(u.startsWith('/add?')){
           let n1, n2, sum;
           ({ n1, n2 } = require('querystring').parse(u.substring(5)));
-          sum = eval(n1 + n2);
+          sum = Number(n1) + Number(n2);
           res.end('n1 + n2 = ' + sum);
         } else res.end('Hi! I am working');
       }
