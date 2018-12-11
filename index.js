@@ -6,8 +6,13 @@ require('http')
         res.end('Hello world!');
         break;
       }
-      
-      default: res.end('Hi! I am working');
+      default: {
+        if(u.startsWith('/add?')){
+          let n1, n2;
+          ({ n1, n2 } = require('querystring').parse(u.substring(5)));
+          res.end('n1 + n2 = ', n1 + n2);
+        } else res.end('Hi! I am working');
+      }
     }
   })
   .listen(process.env.PORT || PORT);
